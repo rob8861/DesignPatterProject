@@ -110,6 +110,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CollaborativeRobot.cpp" />
+    <ClCompile Include="IndustrialRobot.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Method.cpp" />
     <ClCompile Include="RobotFactory.cpp" />
@@ -118,7 +120,9 @@
     <ClCompile Include="Tasks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CollaborativeRobot.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="IndustrialRobot.h" />
     <ClInclude Include="Method.h" />
     <ClInclude Include="RobotController.h" />
     <ClInclude Include="RobotFactory.h" />

@@ -3,36 +3,71 @@
 
 #include "State.h"
 
-class RobotController;
+class CollaborativeRobot;
+class IndustrialRobot;
 
-class Idle : State<RobotController>
+// collaborative robot states
+
+class CollaborativeIdleState : public State<CollaborativeRobot>
 {
 public:
-	void Enter(RobotController* robot) override;
-	void Execute(RobotController* robot) override;
-	void Exit(RobotController* robot) override;
+	void Enter(CollaborativeRobot* robot) override;
+	void Execute(CollaborativeRobot* robot) override;
+	void Exit(CollaborativeRobot* robot) override;
 
-	static Idle* Instance();
+	static CollaborativeIdleState* Instance();
 
 private:
-	Idle() {}
-	Idle(const Idle&);
-	Idle& operator=(const Idle&) = default;
+	CollaborativeIdleState() {}
+	CollaborativeIdleState(const CollaborativeIdleState&);
+	CollaborativeIdleState& operator=(const CollaborativeIdleState&) = default;
 };
 
-class BusyWorkingInTheAssemblyLine : State<RobotController>
+class CollaborativeWorkingState : public State<CollaborativeRobot>
 {
 public:
-	void Enter(RobotController* robot) override;
-	void Execute(RobotController* robot) override;
-	void Exit(RobotController* robot) override;
+	void Enter(CollaborativeRobot* robot) override;
+	void Execute(CollaborativeRobot* robot) override;
+	void Exit(CollaborativeRobot* robot) override;
 
-	static BusyWorkingInTheAssemblyLine* Instance();
+	static CollaborativeWorkingState* Instance();
 
 private:
-	BusyWorkingInTheAssemblyLine() {}
-	BusyWorkingInTheAssemblyLine(const BusyWorkingInTheAssemblyLine&);
-	BusyWorkingInTheAssemblyLine& operator=(const BusyWorkingInTheAssemblyLine&) = default;
+	CollaborativeWorkingState() {}
+	CollaborativeWorkingState(const CollaborativeWorkingState&);
+	CollaborativeWorkingState& operator=(const CollaborativeWorkingState&) = default;
+};
+
+// industrial robot states
+
+class IndustrialIdleState : public State<IndustrialRobot>
+{
+public:
+	void Enter(IndustrialRobot* robot) override;
+	void Execute(IndustrialRobot* robot) override;
+	void Exit(IndustrialRobot* robot) override;
+
+	static IndustrialIdleState* Instance();
+
+private:
+	IndustrialIdleState() {}
+	IndustrialIdleState(const IndustrialIdleState&);
+	IndustrialIdleState& operator=(const IndustrialIdleState&) = default;
+};
+
+class IndustrialWorkingState : public State<IndustrialRobot>
+{
+public:
+	void Enter(IndustrialRobot* robot) override;
+	void Execute(IndustrialRobot* robot) override;
+	void Exit(IndustrialRobot* robot) override;
+
+	static IndustrialWorkingState* Instance();
+
+private:
+	IndustrialWorkingState() {}
+	IndustrialWorkingState(const IndustrialWorkingState&);
+	IndustrialWorkingState& operator=(const IndustrialWorkingState&) = default;
 };
 
 #endif

@@ -3,31 +3,37 @@
 
 #include "Method.h"
 
-class DispenseStep : Method
+class DispenseStep : public Method
 {
 public:
 	explicit DispenseStep(const char* string)
 		: Method(string)
 	{
 	}
+
+	void RunStep() const override;
 };
 
-class AspirateStep : Method
+class AspirateStep : public Method
 {
 public:
 	explicit AspirateStep(const char* string)
 		: Method(string)
 	{
 	}
+
+	void RunStep() const override;
 };
 
-class WashStep : Method
+class WashStep : public Method
 {
 public:
 	explicit WashStep(const char* string)
 		: Method(string)
 	{
 	}
+
+	void RunStep() const override;
 };
 
 #endif

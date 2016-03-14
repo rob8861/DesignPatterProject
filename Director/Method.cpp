@@ -1,6 +1,5 @@
 ﻿#include "Method.h"
 #include <algorithm>
-#include <iostream>
 #include <chrono>
 #include <thread>
 
@@ -13,7 +12,7 @@ void Method::RunMethod() const
 		// get the step
 		Method* step = *itr;
 		// run the step 
-		std::cout << "running step " << step->Name() << std::endl;
+		step->RunStep();
 		// simulate step being run
 		std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP));
 	}

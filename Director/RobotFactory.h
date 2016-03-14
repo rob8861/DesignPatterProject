@@ -1,35 +1,37 @@
 ﻿#ifndef ROBOT_FACTORY_H
 #define ROBOT_FACTORY_H
 
+#include "CollaborativeRobot.h"
+#include "IndustrialRobot.h"
+#include "RobotStates.h"
+
 class RobotController;
-class CollaborativeRobot;
+
 
 class RobotFactory
 {
 public:
 	virtual ~RobotFactory()	{}
 
-	virtual RobotController* MakeRobot() const = 0;
+	virtual RobotController* MakeRobot(int) const = 0;
 
 };
 
-class CollaborativeRobotFactory : RobotFactory
+class CollaborativeRobotFactory : public RobotFactory
 {
 public:
-	RobotController* MakeRobot() const override
+	RobotController* MakeRobot(int id) const override
 	{
-		// return new CollaborativeRobot;
-		return nullptr;
+		return new CollaborativeRobot(id, CollaborativeIdleState::Instance());
 	}
 };
 
-class IndustialRobotFactory : RobotFactory
+class IndustialRobotFactory : public RobotFactory
 {
 public:
-	RobotController* MakeRobot() const override
+	RobotController* MakeRobot(int id) const override
 	{
-		// return new IndustrialRobot;
-		return nullptr;
+		 return new IndustrialRobot(id, IndustrialIdleState::Instance());
 	}
 };
 
