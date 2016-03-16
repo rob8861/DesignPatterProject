@@ -25,7 +25,7 @@
     <Filter Include="Header Files\AbstractFactory">
       <UniqueIdentifier>{917d26e9-3402-45bb-a054-2458b298137b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Composit">
+    <Filter Include="Header Files\Composite">
       <UniqueIdentifier>{43054ce9-c433-434a-9b10-9fa0845f1dc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -75,10 +75,10 @@
       <Filter>Header Files\State</Filter>
     </ClInclude>
     <ClInclude Include="Method.h">
-      <Filter>Header Files\Composit</Filter>
+      <Filter>Header Files\Composite</Filter>
     </ClInclude>
     <ClInclude Include="RobotSteps.h">
-      <Filter>Header Files\Composit</Filter>
+      <Filter>Header Files\Composite</Filter>
     </ClInclude>
     <ClInclude Include="RobotFactory.h">
       <Filter>Header Files\AbstractFactory</Filter>

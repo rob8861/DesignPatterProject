@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 	PlaceItemCommand cmd4(industrialRobot1, placeLocation);
 	cmd4.Execute();
 
-	// ---  demostrate usage of composit pattern --- //
+	// ---  demostrate usage of composite pattern --- //
 
 	// create few methods for both robots to run.
 	Method* bigMethod = new Method("BigMethod");

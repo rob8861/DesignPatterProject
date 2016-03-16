@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------
-//	Design Pattern - Composit
+//	Design Pattern - Composite
 // 
 //	A method is a set of instructions a robot can
 //  process. Each mathod may conatain one or more

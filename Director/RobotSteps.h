@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------
-//	Design Pattern - Composit
+//	Design Pattern - Composite
 // -------------------------------------------------
 #ifndef ROBOT_STEPS_H
 #define ROBOT_STEPS_H
