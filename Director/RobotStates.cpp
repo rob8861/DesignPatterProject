@@ -1,81 +1,60 @@
 ﻿#include "RobotStates.h"
+#include "RobotController.h"
+#include "Tasks.h"
+#include <iostream>
 
-// ------------------------------------------
-//	Collaborative robot states
-// ------------------------------------------
-void CollaborativeIdleState::Enter(CollaborativeRobot* robot)
+
+void Idle::Enter(RobotController* robot)
 {
-	 
+	std::cout << "robot [" << robot->GetId() << "] is idling and waiting for more work." << std::endl;
 }
 
-void CollaborativeIdleState::Execute(CollaborativeRobot* robot)
+void Idle::Execute(RobotController* robot)
 {
+	// if the robot queue has filled up, we can transition to working state
+	// where it will begin executing the methods.
+	if (robot->IsBusy())
+	{
+		robot->GetSM()->ChangeState(Working::Instance());
+	}
 }
 
-void CollaborativeIdleState::Exit(CollaborativeRobot* robot)
+void Idle::Exit(RobotController* robot)
 {
+	std::cout << "robot [" << robot->GetId() << "] is about to start work." << std::endl;
 }
 
-CollaborativeIdleState* CollaborativeIdleState::Instance()
+Idle* Idle::Instance()
 {
-	static CollaborativeIdleState instance;
+	static Idle instance;
 	return &instance;
 }
 
-void CollaborativeWorkingState::Enter(CollaborativeRobot* robot)
+void Working::Enter(RobotController* robot)
 {
+	std::cout << "robot [" << robot->GetId() << "] is executing tasks in the queue." << std::endl;
 }
 
-void CollaborativeWorkingState::Execute(CollaborativeRobot* robot)
+void Working::Execute(RobotController* robot)
 {
+	// send a command that will run once per cycle, so long there are
+	// methods in the queue
+	ManipulatePlateCommand cmd(robot);
+	cmd.Execute();
+	// once the queue is depleted, we can transition back to idle
+	if (!robot->IsBusy())
+	{
+		robot->GetSM()->ChangeState(Idle::Instance());
+	}
 }
 
-void CollaborativeWorkingState::Exit(CollaborativeRobot* robot)
+void Working::Exit(RobotController* robot)
 {
+	std::cout << "robot [" << robot->GetId() << "] finshed executing all its tasks in the queue." << std::endl;
 }
 
-CollaborativeWorkingState* CollaborativeWorkingState::Instance()
+Working* Working::Instance()
 {
-	static CollaborativeWorkingState instance;
-	return &instance;
-}
-
-// --------------------------------------------------------------
-//		Industrial robot states
-// --------------------------------------------------------------
-
-void IndustrialIdleState::Enter(IndustrialRobot* robot)
-{
-}
-
-void IndustrialIdleState::Execute(IndustrialRobot* robot)
-{
-}
-
-void IndustrialIdleState::Exit(IndustrialRobot* robot)
-{
-}
-
-IndustrialIdleState* IndustrialIdleState::Instance()
-{
-	static IndustrialIdleState instance;
-	return &instance;
-}
-
-void IndustrialWorkingState::Enter(IndustrialRobot* robot)
-{
-}
-
-void IndustrialWorkingState::Execute(IndustrialRobot* robot)
-{
-}
-
-void IndustrialWorkingState::Exit(IndustrialRobot* robot)
-{
-}
-
-IndustrialWorkingState* IndustrialWorkingState::Instance()
-{
-	static IndustrialWorkingState instance;
+	static Working instance;
 	return &instance;
 }

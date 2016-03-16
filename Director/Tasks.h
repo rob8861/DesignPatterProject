@@ -1,17 +1,19 @@
-﻿#ifndef TASK_H
+﻿// -------------------------------------------------
+//	Design Pattern - Command
+// -------------------------------------------------
+#ifndef TASK_H
 #define TASK_H
 
 #include "Command.h"
-
-class RobotController;
+#include "RobotController.h"
+#include "Vector3.h"
 
 class ManipulatePlateCommand : public Command
 {
 public:
-	explicit ManipulatePlateCommand(RobotController* robot);
+	explicit ManipulatePlateCommand(RobotController* robot) : _robot(robot) {};
 
 	void Execute() override;
-	bool CanExecute() override;
 
 private:
 	RobotController* _robot;
@@ -21,25 +23,33 @@ private:
 class PickItemCommand : public Command
 {
 public:
-	explicit PickItemCommand(RobotController* robot);
+	explicit PickItemCommand(RobotController* robot, Vector3 pickLocation) :
+		_robot(robot), _pickLocation(pickLocation)
+	{
+		
+	}
 
 	void Execute() override;
-	bool CanExecute() override;
 
 private:
 	RobotController* _robot;
+	Vector3 _pickLocation;
 };
 
 class PlaceItemCommand : public Command
 {
 public:
-	explicit PlaceItemCommand(RobotController* robot);
+	explicit PlaceItemCommand(RobotController* robot, Vector3 placeLocation) : 
+		_robot(robot), _placeLocation(placeLocation)
+	{
+		
+	}
 
 	void Execute() override;
-	bool CanExecute() override;
 
 private:
 	RobotController* _robot;
+	Vector3 _placeLocation;
 };
 
 #endif

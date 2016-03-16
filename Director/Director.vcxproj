@@ -129,6 +129,7 @@
     <ClInclude Include="RobotStates.h" />
     <ClInclude Include="RobotSteps.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Tasks.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>

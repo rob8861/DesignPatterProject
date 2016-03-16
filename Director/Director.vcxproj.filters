@@ -89,5 +89,8 @@
     <ClInclude Include="IndustrialRobot.h">
       <Filter>Header Files\FactoryMethod</Filter>
     </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

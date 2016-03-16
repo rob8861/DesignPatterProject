@@ -1,4 +1,7 @@
-﻿#ifndef ROBOT_STEPS_H
+﻿// -------------------------------------------------
+//	Design Pattern - Composit
+// -------------------------------------------------
+#ifndef ROBOT_STEPS_H
 #define ROBOT_STEPS_H
 
 #include "Method.h"

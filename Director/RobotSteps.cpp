@@ -3,15 +3,15 @@
 
 void DispenseStep::RunStep() const
 {
-	std::cout << "Dispensing liquid" << std::endl;
+	std::cout << "->\tDispensing liquid" << std::endl;
 }
 
 void AspirateStep::RunStep() const
 {
-	std::cout << "Aspirating liquid" << std::endl;
+	std::cout << "->\tAspirating liquid" << std::endl;
 }
 
 void WashStep::RunStep() const
 {
-	std::cout << "Washing plate" << std::endl;
+	std::cout << "->\tWashing plate" << std::endl;
 }

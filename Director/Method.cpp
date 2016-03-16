@@ -1,10 +1,7 @@
 ﻿#include "Method.h"
 #include <algorithm>
-#include <chrono>
-#include <thread>
 
-const int SLEEP = 3000;
-
+// execute each step of the method
 void Method::RunMethod() const
 {
 	for (auto itr = _steps.cbegin(); itr != _steps.cend() ; ++itr)
@@ -13,8 +10,6 @@ void Method::RunMethod() const
 		Method* step = *itr;
 		// run the step 
 		step->RunStep();
-		// simulate step being run
-		std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP));
 	}
 }
 

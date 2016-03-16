@@ -6,7 +6,7 @@ using namespace std;
 
 void IndustrialRobot::MoveToPosition(Vector3 position)
 {
-	cout << "robot " << _id << " is moving to position: " << position;
+	cout << "robot " << _id << " is moving to position: " << position << endl;
 	_currentPosition = position;
 }
 
@@ -15,14 +15,18 @@ Vector3 IndustrialRobot::GetCurrentPosition()
 	return _currentPosition;
 }
 
-void IndustrialRobot::PerformTask(Method* method)
+/*
+* An industrial robot can execute 5 methods per cycle.
+*/
+void IndustrialRobot::PerformTask()
 {
-	method->RunMethod();
-}
-
-void IndustrialRobot::ChangeState(State<IndustrialRobot>* newState)
-{
-	_currentState->Exit(this);
-	_currentState = newState;
-	_currentState->Enter(this);
+	if (_queue.size() >= PROCESS_PER_CYCLE_IND)
+	{
+		for (size_t i = 0; i < PROCESS_PER_CYCLE_IND; i++)
+		{
+			auto step = _queue.front();
+			step->RunMethod();
+			_queue.pop();
+		}
+	}
 }

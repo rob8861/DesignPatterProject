@@ -1,73 +1,46 @@
-﻿#ifndef ROBOT_STATES_H
+﻿// -------------------------------------------------
+//	Design Patterns - State and Singleton
+// -------------------------------------------------
+#ifndef ROBOT_STATES_H
 #define ROBOT_STATES_H
 
 #include "State.h"
 
-class CollaborativeRobot;
-class IndustrialRobot;
+class RobotController;
 
-// collaborative robot states
-
-class CollaborativeIdleState : public State<CollaborativeRobot>
+/*
+*	The robots can transition between idle and working states.
+*	While in idle state, the robot can queue in tasks.
+*	While in working state, the robot execute all the queued tasks.
+*/
+class Idle : public State<RobotController>
 {
 public:
-	void Enter(CollaborativeRobot* robot) override;
-	void Execute(CollaborativeRobot* robot) override;
-	void Exit(CollaborativeRobot* robot) override;
+	void Enter(RobotController* robot) override;
+	void Execute(RobotController* robot) override;
+	void Exit(RobotController* robot) override;
 
-	static CollaborativeIdleState* Instance();
+	static Idle* Instance();
 
 private:
-	CollaborativeIdleState() {}
-	CollaborativeIdleState(const CollaborativeIdleState&);
-	CollaborativeIdleState& operator=(const CollaborativeIdleState&) = default;
+	Idle() {}
+	Idle(const Idle&);
+	Idle& operator=(const Idle&) = default;
 };
 
-class CollaborativeWorkingState : public State<CollaborativeRobot>
+class Working : public State<RobotController>
 {
 public:
-	void Enter(CollaborativeRobot* robot) override;
-	void Execute(CollaborativeRobot* robot) override;
-	void Exit(CollaborativeRobot* robot) override;
+	void Enter(RobotController* robot) override;
+	void Execute(RobotController* robot) override;
+	void Exit(RobotController* robot) override;
 
-	static CollaborativeWorkingState* Instance();
-
-private:
-	CollaborativeWorkingState() {}
-	CollaborativeWorkingState(const CollaborativeWorkingState&);
-	CollaborativeWorkingState& operator=(const CollaborativeWorkingState&) = default;
-};
-
-// industrial robot states
-
-class IndustrialIdleState : public State<IndustrialRobot>
-{
-public:
-	void Enter(IndustrialRobot* robot) override;
-	void Execute(IndustrialRobot* robot) override;
-	void Exit(IndustrialRobot* robot) override;
-
-	static IndustrialIdleState* Instance();
+	static Working* Instance();
 
 private:
-	IndustrialIdleState() {}
-	IndustrialIdleState(const IndustrialIdleState&);
-	IndustrialIdleState& operator=(const IndustrialIdleState&) = default;
-};
-
-class IndustrialWorkingState : public State<IndustrialRobot>
-{
-public:
-	void Enter(IndustrialRobot* robot) override;
-	void Execute(IndustrialRobot* robot) override;
-	void Exit(IndustrialRobot* robot) override;
-
-	static IndustrialWorkingState* Instance();
-
-private:
-	IndustrialWorkingState() {}
-	IndustrialWorkingState(const IndustrialWorkingState&);
-	IndustrialWorkingState& operator=(const IndustrialWorkingState&) = default;
+	Working() {}
+	Working(const Working&);
+	Working& operator=(const Working&) = default;
 };
 
 #endif

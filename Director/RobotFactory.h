@@ -1,9 +1,11 @@
-﻿#ifndef ROBOT_FACTORY_H
+﻿// -------------------------------------------------
+//	Design Pattern - Abstract Factory
+// -------------------------------------------------
+#ifndef ROBOT_FACTORY_H
 #define ROBOT_FACTORY_H
 
 #include "CollaborativeRobot.h"
 #include "IndustrialRobot.h"
-#include "RobotStates.h"
 
 class RobotController;
 
@@ -22,7 +24,7 @@ class CollaborativeRobotFactory : public RobotFactory
 public:
 	RobotController* MakeRobot(int id) const override
 	{
-		return new CollaborativeRobot(id, CollaborativeIdleState::Instance());
+		return new CollaborativeRobot(id);
 	}
 };
 
@@ -31,7 +33,7 @@ class IndustialRobotFactory : public RobotFactory
 public:
 	RobotController* MakeRobot(int id) const override
 	{
-		 return new IndustrialRobot(id, IndustrialIdleState::Instance());
+		 return new IndustrialRobot(id);
 	}
 };
 

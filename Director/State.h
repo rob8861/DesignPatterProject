@@ -1,4 +1,7 @@
-﻿#ifndef STATE_H
+﻿// -------------------------------------------------
+//	Design Pattern - State
+// -------------------------------------------------
+#ifndef STATE_H
 #define STATE_H
 
 template<class T>
