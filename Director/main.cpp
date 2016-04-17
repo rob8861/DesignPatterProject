@@ -72,6 +72,7 @@ int main(int argc, char** argv)
 	Method* smallMethod = new Method("Small Method");
 	smallMethod->AddStep(new DispenseStep("20uL"));
 	smallMethod->AddStep(new WashStep("1mL water"));
+	smallMethod->AddStep(new AspirateStep("15mL"));
 
 	Method* washMethod = new Method("wash method");
 	washMethod->AddStep(new WashStep("50mL"));
