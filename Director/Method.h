@@ -16,7 +16,7 @@ const int PROCESS_PER_CYCLE_IND = 5;
 class Method
 {
 public:
-	Method(const char* string) : _name(string) {}
+	Method(const char* name) : _name(name) {}
 	virtual ~Method() {}
 
 	const char* Name() const	{ return _name;	}
