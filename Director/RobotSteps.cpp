@@ -15,3 +15,8 @@ void WashStep::RunStep() const
 {
 	std::cout << "->\tWashing plate" << std::endl;
 }
+
+void MixStep::RunStep() const
+{
+	std::cout << "->\tMixing solvent" << std::endl;
+}

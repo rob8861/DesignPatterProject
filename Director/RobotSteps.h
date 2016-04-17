@@ -9,8 +9,8 @@
 class DispenseStep : public Method
 {
 public:
-	explicit DispenseStep(const char* string)
-		: Method(string)
+	explicit DispenseStep(const char* name)
+		: Method(name)
 	{
 	}
 
@@ -20,8 +20,8 @@ public:
 class AspirateStep : public Method
 {
 public:
-	explicit AspirateStep(const char* string)
-		: Method(string)
+	explicit AspirateStep(const char* name)
+		: Method(name)
 	{
 	}
 
@@ -31,8 +31,19 @@ public:
 class WashStep : public Method
 {
 public:
-	explicit WashStep(const char* string)
-		: Method(string)
+	explicit WashStep(const char* name)
+		: Method(name)
+	{
+	}
+
+	void RunStep() const override;
+};
+
+class MixStep : public Method
+{
+public:
+	explicit MixStep(const char* name)
+		: Method(name)
 	{
 	}
 
